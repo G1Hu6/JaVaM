@@ -1,0 +1,3 @@
+class StrDemo3{
+
+}
