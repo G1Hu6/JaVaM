@@ -11,7 +11,7 @@ class ReverseDemo{
 		str=sb2.reverse().toString();//Method chaining (Object class method)
 		System.out.println(str);
 
-		myRevStr("Pranav");
+	        myRevStr("Pranav");
 	}
 	static void myRevStr(String str){
 		char arr[]=str.toCharArray();
