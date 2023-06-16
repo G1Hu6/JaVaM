@@ -25,7 +25,7 @@ class Outer{
         class Inner{
                static void fun(){
                         System.out.println("In fun-Outer");
-			//System.out.println(this$0);
+			//System.out.println(this);
                 }
         }
         static void gun(){
