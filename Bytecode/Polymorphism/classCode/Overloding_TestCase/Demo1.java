@@ -17,7 +17,7 @@ class Client{
 */
 class Demo1{
         void fun(float a){
-                System.out.println("Int Para");
+                System.out.println("Float Para");
         }
         void fun(char x){
                 System.out.println("Char Para");
