@@ -20,8 +20,13 @@ class Client{
 		//error: cannot find symbol
 
 		//Outer.Inner obj2=new Inner();		//error: cannot find symbol
-
+		
+		//obj1.Inner obj3=obj1.new Inner();	//error: package obj1 does not exit.
+		
 		Outer.Inner obj2=obj1.new Inner();
+		Outer.Inner obj5=new Outer().new Inner();
+
+		//Outer.Inner obj4=new Inner().new Outer();
 		obj2.fun();	//In fun-Outer
 
 		
