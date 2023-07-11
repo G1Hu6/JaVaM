@@ -12,3 +12,8 @@ interface Demo1{
 class Child implements Demo1{		//error: Child is not abstract and does not override abstract method fun() in Demo1
 
 }
+
+/*
+    Definition: Interface is an incomplete class with all the mwthods in it decleared 
+                as abstract by compiler.
+*/
