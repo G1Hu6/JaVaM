@@ -1,16 +1,22 @@
-/*
+
 class OuterDemo1{
 	int x=10;
 	static int y=20;
 	void fun(){
 		int a=11;
-		//static int b=22;		//error: illegal start of expresion
+		static int b=22;		//error: illegal start of expresion
 	}
+	 public static void main(String[] args){
+                int p=40;
+                static int q=70;                //error: illegal start of expresion
+        }
+
 }
+/*
 class Client{
 	public static void main(String[] args){
 		int p=40;
-		//static int q=70;		//error: illegal start of expresion
+		static int q=70;		//error: illegal start of expresion
 	}
 }
 */
@@ -20,7 +26,7 @@ class Client{
 	2.In class both static and non-static are allowed. 
 */
 
-
+/*
 class OuterDemo1{
         int x=10;
         static int y=20;
@@ -35,4 +41,4 @@ class Client{
                 //final static int q=70;              //error: modifier static not allowed here
         }
 }
-
+*/
