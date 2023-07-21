@@ -1,3 +1,5 @@
+//creating Thread using Runnable interface is more prefered then using Thread class because we can extend another class to add more functionality.
+
 class Demo{
 	//200 methods
 }
