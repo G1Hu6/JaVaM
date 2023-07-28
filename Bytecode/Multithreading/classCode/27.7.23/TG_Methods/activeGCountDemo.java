@@ -1,3 +1,27 @@
+/*public int activeCount()
+
+Returns an estimate of the number of active threads in this thread group and its subgroups. Recursively iterates over all subgroups in this thread group.
+
+The value returned is only an estimate because the number of threads may change dynamically while this method traverses internal data structures, and might be affected by the presence of certain system threads. This method is intended primarily for debugging and monitoring purposes.
+
+Returns:
+    an estimate of the number of active threads in this thread group and in any other thread group that has this thread group as an ancestor
+Since:
+    1.0 
+
+
+/*public int activeGroupCount()
+
+Returns an estimate of the number of active groups in this thread group and its subgroups. Recursively iterates over all subgroups in this thread group.
+
+The value returned is only an estimate because the number of thread groups may change dynamically while this method traverses internal data structures. This method is intended primarily for debugging and monitoring purposes.
+
+Returns:
+    the number of active thread groups with this thread group as an ancestor
+Since:
+    1.0 
+/*
+*/
 class MyThread extends Thread{
 	static Thread th=null;
 	MyThread(ThreadGroup tg,String s){
