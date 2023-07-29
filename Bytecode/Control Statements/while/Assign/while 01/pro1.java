@@ -2,6 +2,7 @@
   
   Output: 2 4 6 8 10 12 14 16 18 20
  */
+ 
 class Pro1{
 	public static void main(String[]args){
 		int i=1;
