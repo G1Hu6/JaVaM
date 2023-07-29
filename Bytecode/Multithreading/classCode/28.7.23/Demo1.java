@@ -12,7 +12,7 @@ class MyThread implements Runnable{
 	}
 	void dailyTask(){
 		try{
-			Thread.sleep(10000);
+			Thread.sleep(50000);
 		}catch(InterruptedException ie){
 		
 		}
@@ -24,8 +24,8 @@ class TPDemo{
 		//ThreadPoolExecutor es=Executors.newCachedThreadPool(); 
 		//error:incompatible types: ExecutorService cannot be converted to ThreadPoolExecutor.
 
-		ThreadPoolExecutor es=(ThreadPoolExecutor)Executors.newCachedThreadPool();
-		for(int i=0;i<=8;i++){
+		ThreadPoolExecutor es=(ThreadPoolExecutor)Executors.newCachedThreadPool();    //ThreadPoolExecutor is used more because it is most derived class.
+		for(int i=1;i<=9;i++){
 			MyThread obj=new MyThread(i);
 			es.execute(obj);
 		}
