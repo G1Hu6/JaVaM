@@ -8,7 +8,7 @@ Even numbers sum = 26
  */
 
 import java.io.*;
-class Pro3{
+class SumOfEvenOddElements{
 	public static void main(String[] args)throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter Array Size =");

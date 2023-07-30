@@ -6,7 +6,7 @@ Number of Even Elements: 4
 Number of Odd Elements : 3
  */
 import java.io.*;
-class Pro2{
+class CountOfEvenOddElements{
 	public static void main(String[] args)throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter Array Size =");

@@ -6,7 +6,7 @@ Enter array : 1 2 3 5 15 16 14 28 17 29 123
 Output: 2 15 28 17 123
  */
 import java.io.*;
-class Pro10{
+class DigitsHavingEvenSum{
 	public static void main(String[] args)throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter Array Size =");

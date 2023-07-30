@@ -7,7 +7,7 @@ Merged Array = [10, 20, 30, 40, 50, 9, 18, 27, 36, 45]
 Hint: you can take 3rd array
  */
 import java.io.*;
-class Pro9{
+class Merge2Array{
 	public static void main(String[] args) throws IOException{
 	    BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 	    

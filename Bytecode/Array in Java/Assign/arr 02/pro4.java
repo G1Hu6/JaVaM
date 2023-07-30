@@ -5,7 +5,7 @@ Enter element to search: 4
 Output: element found at index: 2
  */
 import java.io.*;
-class Pro4{
+class SearchElementInArray{
 	public static void main(String[] args)throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter Array Size =");

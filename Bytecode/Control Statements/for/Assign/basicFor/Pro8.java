@@ -1,5 +1,5 @@
 //8. Write a program to print a table of 12 in reverse order
-class Pro8{
+class RevTable_12{
 	public static void main(String[] args){
 		int n=12;
 		for(int i=10;i>=1;i--){

@@ -13,7 +13,7 @@ Output:
  */
 
 import java.io.*;
-class Pro1{
+class SumOfAllElements{
 	public static void main(String[] args)throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter Array Size =");

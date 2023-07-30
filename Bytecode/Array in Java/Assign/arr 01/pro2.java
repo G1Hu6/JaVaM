@@ -1,5 +1,5 @@
 import java.io.*;
-class Pro2{
+class MulOfEvenElements{
 	public static void main(String[] w)throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		int size=Integer.parseInt(br.readLine());

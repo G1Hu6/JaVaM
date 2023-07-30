@@ -6,7 +6,7 @@ Output: 10 25 55
  */
 
 import java.io.*;
-class Pro5{
+class DivBy5{
 	public static void main(String[] p)throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter Size =");

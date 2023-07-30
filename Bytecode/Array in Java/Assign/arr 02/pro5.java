@@ -1,6 +1,6 @@
 
 import java.io.*;
-class Pro5{
+class MinElementInArray{
      public static void main(String[]m)throws IOException{
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         int size=Integer.parseInt(br.readLine());

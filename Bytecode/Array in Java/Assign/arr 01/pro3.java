@@ -8,7 +8,7 @@ output : 48
 //2 * 4 * 6
  */
 import java.io.*;
-class Pro3{
+class MulOfOddIndexElements{
 	public static void main(String[] args)throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter Size =");

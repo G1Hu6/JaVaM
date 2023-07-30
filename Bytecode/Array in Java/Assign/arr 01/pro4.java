@@ -1,5 +1,5 @@
 import java.io.*;
-class Pro4{
+class VowelsInArray{
 	public static void main(String[] p)throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		int size=Integer.parseInt(br.readLine());
