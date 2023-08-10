@@ -1,4 +1,7 @@
+// For our User Defined classes all objects created with new keyword having unique address evenif passing same data
 
+//Repair This Code to accept unique data.
+ 
 import java.util.*;
 
 class MyClass{
