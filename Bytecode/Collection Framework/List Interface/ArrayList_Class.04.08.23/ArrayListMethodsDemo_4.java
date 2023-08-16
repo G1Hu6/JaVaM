@@ -37,9 +37,10 @@ class ArrayListDemo4{
 		al.add(23);
 
 		// 4.public boolean removeIf(java.util.function.Predicate<? super E>);
-		al.removeIf(n -> (n % 3==0));
+		//al.removeIf(n -> (n % 3==0));
 		System.out.println(al);
 
-
+		// 5.public java.util.List<E> subList(int, int);
+		System.out.println(al.subList(0,3));
 	}
 }

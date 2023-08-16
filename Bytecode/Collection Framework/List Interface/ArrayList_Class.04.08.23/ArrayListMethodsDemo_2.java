@@ -20,6 +20,10 @@ class ArrayListDemo_2{
 		
 		al.addAll(al2);
 
+		//public boolean retainAll(java.util.Collection<?>);
+		al.retainAll(al2);
+		System.out.println("RetainAll =" +al);
+
 		//public boolean addAll(int, java.util.Collection<? extends E>);
 		al.addAll(2,al2);
 		
