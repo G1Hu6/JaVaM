@@ -54,24 +54,38 @@ class LinkedListMethodes extends LinkedList{
 		System.out.println(ll.peekLast());
 
 
-		//public E poll();
+		// 7.public E poll();
 		//Retrieves and removes the head (first element) of this list
 		System.out.println(ll.poll());
 		System.out.println(ll.pollFirst());
 		System.out.println(ll.pollLast());
 
-		//public boolean offer(E);
+		// 8.public boolean offer(E);
 		//Adds the specified element as the tail (last element) of this list.
 
-		//public boolean offerFirst(E);
+		// 9.public boolean offerFirst(E);
 		//Inserts the specified element at the front of this list.
 
-		//public boolean offerLast(E);
+		// 10.public boolean offerLast(E);
 		//Inserts the specified element at the end of this list.
 
 
 		System.out.println(ll.pop());
 		System.out.println(ll);
+		
+		LinkedList ll2 = new LinkedList(al);
+		System.out.println(ll2);
+
+		ll2.push(50);
+		ll2.add(2,50);
+		ll2.add(4,50);
+		System.out.println(ll2);
+
+		// 11.public boolean removeFirstOccurrence(java.lang.Object);
+		ll2.removeFirstOccurrence(50);
+		ll2.removeLastOccurrence(50);
+		System.out.println(ll2);
+		//System.out.println(ll2.node());
 
 	}
 }
