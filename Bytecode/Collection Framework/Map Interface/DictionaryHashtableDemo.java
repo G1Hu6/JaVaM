@@ -18,7 +18,7 @@ class Hashtable{
 			System.out.println(itr1.nextElments());
 		}
 
-		Enumaration itr2 = ht.keys();
+		Enumaration itr2 = ht.elements();
                 while(itr2.hasMoreElements()){
                         System.out.println(itr1.nextElments());
                 }
