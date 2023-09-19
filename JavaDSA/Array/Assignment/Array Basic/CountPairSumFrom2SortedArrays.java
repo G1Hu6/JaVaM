@@ -24,7 +24,7 @@ Constraints:
  */
 
 import java.util.*;
-class {
+class ArrayB27{
         public static void main(String[] args){
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Enter size of Array1 :");
@@ -44,15 +44,24 @@ class {
                 for(int i = 0; i<arr2.length; i++){
                         arr2[i] = sc.nextInt();
                 }
+		System.out.println("Enter sum :");
+                int sum = sc.nextInt();
 
+		System.out.println("The Pairs with Given sum are :");
+		ArrayB27.countPairSumFromtwo(arr1, size1, arr2, size2, sum);
 	}
 
-	static void countPairSumFromtwo(int arr1[], int n1, int arr2[], int n2){
+	static void countPairSumFromtwo(int arr1[], int n1, int arr2[], int n2, int sum){
+		int count = 0;
 		for(int i = 0; i<n1; i++){
 			for(int j = n2-1; j>=0; j--){
 				if(arr1[i]+arr2[j] < sum)
 					break;
+				if(arr1[i]+arr2[j] == sum){
+					count++;
+				}
 			}
 		}
+		System.out.println(count);
 	}
 }
