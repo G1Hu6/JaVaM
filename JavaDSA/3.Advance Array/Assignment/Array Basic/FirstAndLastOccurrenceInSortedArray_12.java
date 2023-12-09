@@ -40,7 +40,7 @@ class ArrayB12{
 		int m = 0;
 		int ans = -1;
 
-		while(s <== e){
+		while(s <= e){
 			m = s +(e - s)/2;
 			if(arr[m] < key){
 				s = m+1;
