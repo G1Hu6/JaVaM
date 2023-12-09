@@ -137,7 +137,7 @@ class CircularLinkedList{
 				pos--;
 			}
 			temp.next = temp.next.next;
-			temp.next.next = null;
+			//temp.next.next = null;
 		}
 			
 	}
@@ -147,9 +147,9 @@ class CircularLinkedList{
 			System.out.println("SinglyCircular LinkedList is Empty!!!");
 		}else{
 			Node temp = head;
-			int dashCount = 0;
+			//int dashCount = 0;
 			while(temp.next != head ){
-				dashCount++;
+				//dashCount++;
 				System.out.print(temp.data + " <-> ");
 				temp = temp.next;
 			}
