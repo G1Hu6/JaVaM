@@ -1,18 +1,19 @@
+
 import java.util.*;
 
 class LinkedList{
-
-	class Node{
-                Node next = null;
-                int data;
-
-                Node(int data){
-                        this.data = data;
-                }
-	}
-
 	Node head = null;
+	
+	class Node{
+		int data = 0;
+		Node next = null;
 
+		Node(int data){
+			this.data = data;
+		}
+	}
+	
+	//  Add newly created Node at last position in LinkedList
 	void addLast(int data){
 		Node newNode = new Node(data);
 
@@ -27,85 +28,75 @@ class LinkedList{
 			temp.next = newNode;
 		}
 	}
-
+	
 	int countNode(){
 		Node temp = head;
 		int count = 0;
 
 		while(temp != null){
+
 			count++;
 			temp = temp.next;
 		}
 		return count;
 	}
-
+	
+	// Print created SinglyLinkedList
 	void printSLL(){
 		if(head == null){
-			System.out.println("Empty");
-		}
-		Node temp = head;
-
-		while(temp.next != null){
-			System.out.print(temp.data + " -> ");
-			temp = temp.next;
-		}
-		System.out.print(temp.data + "\n");
-	}
-
-	void reverseSwap(){
-
-		int count = countNode();
-
-		if(head == null){
-			return;
+			System.out.println("LinkedList is Empty!!!");
 		}else{
-			int len = countNode();
-			
-			while(count < len/2){
-				
+			Node temp = head;
 
+			while(temp != null){
+				if(temp.next == null){
+					System.out.print(temp.data);
+				}else{
+					System.out.print(temp.data + " -> ");
+				}
+				temp = temp.next;
 			}
+			System.out.println();
 		}
 	}
 
-	void reverseItr(){
+	Node kReverse(Node prev, Node curr, Node forward, int k){
 		
-		if(head == null){
-			return;
-		}else{
+		Node temp = curr;
+		if(curr == null){
+			return curr;
+		}
 
-		Node prev = null;
-		Node curr = head;
-		Node forward = null;
+		int count = 0;
 
-		while(curr != null){
+		while(count < k && curr != null){
+			
 			forward = curr.next;
-			curr.next = prev;	 //curr.next = null;
+			curr.next = prev;
 			prev = curr;
 			curr = forward;
+			count++;
 		}
+		temp.next = kReverse(prev, curr, forward, k);
+		
 		head = prev;
-		}
-	}
+		return prev;
 
-	void reverseRec(){
-
-		//...
 	}
 }
 
-class Client{
+class K_ReverseLinkedList{
 	public static void main(String[] args){
 		LinkedList ll = new LinkedList();
 		Scanner sc = new Scanner(System.in);
 
 		char ch;
 		do{
-			
+
 			System.out.println("1. Add node");
 			System.out.println("2. Print");
-			System.out.println("3. Reverse LinkedList by Iterative");
-			System.out.println("4. Reverse LinkedList by Recursive");
+			System.out.println("3. Kth Reverse LinkedList By Recursive");
+			//System.out.println("4. Reverse LinkedList by Recursive");
 
 			System.out.println("Enter Choise :");
 			int choise = sc.nextInt();
@@ -113,28 +104,28 @@ class Client{
 			switch(choise){
 
 				case 1: {
-				
+
 					System.out.println("Enter data");
 					int data = sc.nextInt();
 					ll.addLast(data);
-					break;	
+					break;
 				}
 				case 2: {
 					ll.printSLL();
 					break;
 				}
 				case 3: {
-					ll.reverseItr();
+					ll.kReverse(null, ll.head, null, 3);
 					break;
 				}
-				case 4: {
-					ll.reverseRec();
-					break;
+				default: {
+					System.out.println("Incorrect Input");
+					break;	
 				}
 			}
 
 			System.out.println("Continue ?");
 			ch = sc.next().charAt(0);
-		}while(ch == 'Y' && ch == 'y');
+		}while(ch == 'Y' || ch == 'y');
 	}
 }
