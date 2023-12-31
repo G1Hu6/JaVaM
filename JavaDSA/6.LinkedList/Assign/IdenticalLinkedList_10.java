@@ -9,7 +9,7 @@ class Node{
 	}
 }
 
-class MyLinkedList{
+class IdenticalLinkedList{
 	Node head = null;
 	
 	void addFirst1(int data){
@@ -74,6 +74,32 @@ class MyLinkedList{
                 }
 
 	}
+
+	static boolean isIdentical(IdenticalLinkedList l1, IdenticalLinkedList l2){
+	
+		if(l1.countNode() != l2.countNode()){
+		
+			return false;
+		}else{
+		
+			Node temp1 = l1.head;
+			Node temp2 = l2.head;
+
+			while(temp1 != null){
+			
+				if(temp1.data != temp2.data){
+				
+					return false;
+				}else{
+				
+					temp1 = temp1.next;
+					temp2 = temp2.next;
+				}
+			}
+			return true;
+		}
+	}
+
 	void removeLast(){
 		if(head == null){
                         System.out.println("LinkedList is Empty");
@@ -124,16 +150,37 @@ class Client{
 	public static void main(String[] args){
 
 		Scanner sc = new Scanner(System.in);	
-		MyLinkedList ll = new MyLinkedList();
+		IdenticalLinkedList ll1 = new IdenticalLinkedList();
+		IdenticalLinkedList ll2 = new IdenticalLinkedList();
+		
+		IdenticalLinkedList ll = new IdenticalLinkedList();
 
 		System.out.println("Enter size :");
-		int size = sc.nextInt();
+		int size1 = sc.nextInt();
 
 		System.out.println("Enter elements :");
-		for(int i = 0; i < size; i++){
+		for(int i = 0; i < size1; i++){
 		
 			int data = sc.nextInt();
-			ll.addLast1(data);
+			ll1.addLast1(data);
 		}
-		ll.
+
+		System.out.println("Enter size :");
+                int size2 = sc.nextInt();
+
+                System.out.println("Enter elements :");
+                for(int i = 0; i < size2; i++){
+
+                        int data = sc.nextInt();
+                        ll2.addLast1(data);
+                }
+		
+		if(ll.isIdentical(ll1, ll2)){
+		
+			System.out.println("Identical");
+		}else{
+		
+			System.out.println("Not Identical");
+		}
+	}
 }

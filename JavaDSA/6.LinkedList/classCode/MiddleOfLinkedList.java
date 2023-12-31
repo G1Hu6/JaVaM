@@ -115,10 +115,10 @@ class MyLinkedList{
 		Node slow = head;
 		Node fast = head.next;
 
-		while(fast != null){
+		while(fast.next != null){
 		
 			fast = fast.next;
-				if(fast != null){
+				if(fast.next != null){
 					
 					fast = fast.next;
 				}
