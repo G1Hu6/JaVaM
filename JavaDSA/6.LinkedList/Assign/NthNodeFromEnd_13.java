@@ -119,22 +119,50 @@ class MyLinkedList{
 	}
 }
 
-class Client{
+class NthNodeFromEnd{
+
+	static int nthNodeFromEnd(MyLinkedList ll, int n){
+	
+		int count = 0;
+		if(n <= 0 || n > ll.countNode()){
+			
+			return -1;
+		}else{
+
+			Node temp = ll.head;
+			while(count < ll.countNode()-n){
+			
+				temp = temp.next;
+				count++;
+			}
+			return temp.data;
+		}
+	}
 
 	public static void main(String[] args){
 
-		Scanner sc = new Scanner(System.in);	
-		MyLinkedList ll = new MyLinkedList();
+                Scanner sc = new Scanner(System.in);
+                MyLinkedList ll = new MyLinkedList();
 
-		System.out.println("Enter size :");
-		int size = sc.nextInt();
+                System.out.println("Enter size :");
+                int size = sc.nextInt();
 
-		System.out.println("Enter elements :");
-		for(int i = 0; i < size; i++){
+		System.out.println("Enter value of N :");
+		int n = sc.nextInt();
+
+                System.out.println("Enter elements :");
+                for(int i = 0; i < size; i++){
+
+                        int data = sc.nextInt();
+                        ll.addLast1(data);
+        	}
+
+		if(nthNodeFromEnd(ll, n) == -1){
+			System.out.println("Invalid value of N");
+		}else{
 		
-			int data = sc.nextInt();
-			ll.addLast1(data);
+			System.out.println(nthNodeFromEnd(ll, n));
 		}
-		ll.
 	}
+	
 }

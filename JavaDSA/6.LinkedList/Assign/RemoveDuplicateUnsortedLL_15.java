@@ -117,9 +117,39 @@ class MyLinkedList{
 			System.out.println();
 		}
 	}
+
+	void removeDup(){
+	
+		if(head == null){
+		
+			return;
+		}else{
+		
+			Node start = head, temp = null;
+			while(start != null){
+			
+				Node forward = start.next;
+				temp = start;
+				while(forward != null){
+				
+					if(start.data == forward.data){
+					
+						temp.next = forward.next;
+						//removeAtPosition(j);
+					}else{
+					
+						temp = forward;
+					}
+					forward = forward.next;
+				}
+				start = start.next;
+				printSLL();
+			}
+		}
+	}
 }
 
-class Client{
+class RemoveDuplicate{
 
 	public static void main(String[] args){
 
@@ -135,6 +165,8 @@ class Client{
 			int data = sc.nextInt();
 			ll.addLast1(data);
 		}
-		ll.
+		ll.printSLL();
+		ll.removeDup();
+		ll.printSLL();
 	}
 }
