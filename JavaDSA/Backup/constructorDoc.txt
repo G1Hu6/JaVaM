@@ -1,0 +1,297 @@
+//Program 2
+
+class Employee{
+
+        int? empId;
+        String? empName;
+
+        Employee(){}    // Error: 'Employee' is already declared in this scope.
+
+        Employee(int empId, String empName){}   // Error: Can't use 'Employee' because it is declared more than once.
+
+}
+
+void main(){
+
+        Employee obj = new Employee();
+}
+
+/*
+Output :-
+Error: 'Employee' is already declared in this scope.
+Error: Can't use 'Employee' because it is declared more than once.
+
+Explaination :-
+We can not declear more than one constructors with same name in dart because every thing in dart is object.
+and two objects can not have same 
+*/
+
+// Program 3
+
+class Demo{
+
+        final int? x;
+        final String? str;
+
+        const Demo(this.x, this.str);
+}
+
+void main(){
+
+        Demo obj1 = const Demo(10, "Core2web");
+        print(obj1.hashCode);
+
+        Demo obj2 = const Demo(10, "Binecaps");
+        print(obj2.hashCode);
+}
+
+/*
+
+Output :
+321670808
+513433645
+
+Explaination :-
+Here we create two objects with const constructor Demo() but we are passing different agguments 
+so the value of hashCode is different for different objects.
+*/
+
+//Program 4
+
+class Company{
+
+        int empCount;
+        String compName;
+
+        Company(this.empCount, [this.compName = "Binecaps"]);
+
+        void compInfo(){
+
+                print(empCount);
+                print(compName);
+        }
+}
+
+void main(){
+
+        Company obj1 = Company(100);
+        Company obj2 = Company(200, "Pubmatic");
+
+        obj1.compInfo();
+        obj2.compInfo();
+}
+
+/*
+Output :-
+100
+Binecaps
+200
+Pubmatic
+
+Explaination :-
+In class Company, default parameter is used so if we do not pass default argument then compiler 
+select default value otherwise value is passed is selected.
+*/
+
+// Program 5
+class Company{
+
+        int? x;
+        String? str;
+
+        Company(this.x, {this.str = "Core2web"});
+
+        void compInfo(){
+
+                print(x);
+                print(str);
+        }
+}
+
+void main(){
+
+        Company obj1 = new Company(100);
+        Company obj2 = new Company(200, "Incubator");
+
+        obj1.compInfo();
+        obj2.compInfo();
+}
+
+/*
+Output :-
+Error: Too many positional arguments: 1 allowed, but 2 found.
+Try removing the extra positional arguments.
+        Company obj2 = new Company(200, "Incubator");
+
+Explaination :-
+In class Company default parameterized constructor is used so we can not pass the value
+for that variable.If not passed value then it will take default value otherwise throw above 
+error.
+*/
+
+// Program 6
+
+class Company{
+
+        int? empCount;
+        String? compName;
+
+        Company({this.empCount, this.compName = "Deloitte"});
+
+        void compInfo(){
+
+                print(empCount);
+                print(compName);
+        }
+}
+
+void main(){
+
+        Company obj1 = new Company(empCount: 100, compName: "Veritas");
+        Company obj2 = new Company(compName: "Pubmatic", empCount: 200);
+
+        obj1.compInfo();
+        obj2.compInfo();
+}
+
+/*
+Output :
+100
+Veritas
+200
+Pubmatic
+
+Explaination :-
+Here named parameter are used so we can interchange the sequence of arguments with its variable name decleration.
+*/
+
+
+//Program 7
+
+class Point{
+
+        int x;
+        int y;
+}
+
+void main(){
+
+        Point obj = Point();
+}
+
+/*
+Output :-
+Program7.dart:3:6: Error: Field 'x' should be initialized because its type 'int' doesn't allow null.
+        int x;
+            ^
+Program7.dart:4:6: Error: Field 'y' should be initialized because its type 'int' doesn't allow null.
+        int y;
+
+Explaination :-
+This code work before null safety is introduced in dart.due to dart's null safety it not allowed.
+we must declear variable before it is used.
+*/
+
+// Program 8
+
+class Player{
+
+        int? jerNo;
+        String? pName;
+
+        const Player(this.jerNo, this.pName);
+
+}
+
+void main(){
+
+        Player obj = const(45, "Rohit");
+}
+
+/*
+Output:-
+Program8.dart:12:20: Error: A value of type '(int, String)' can't be assigned to a variable of type 'Player'.
+ - 'Player' is from 'Program8.dart'.
+        Player obj = const(45, "Rohit");
+                          ^
+Program8.dart:6:8: Error: Constructor is marked 'const' so all fields must be final.
+        const Player(this.jerNo, this.pName);
+
+Explaination :-
+final parameter must be passed to const constructor.
+arguments must be passed to the Constructor.
+*/
+
+// Program 9
+
+// Program 10
+
+class Demo{
+
+        Demo(){
+
+                print("In Demo");
+        }
+
+        factory Demo(){
+
+                print("In Demo factory");
+                return Demo();
+        }
+}
+
+void main(){
+
+        Demo obj = new Demo();
+}
+
+/*
+Output :-
+Program10.dart:8:10: Error: 'Demo' is already declared in this scope.
+        factory Demo(){
+                ^^^^
+Program10.dart:3:2: Context: Previous declaration of 'Demo'.
+        Demo(){
+        ^^^^
+Program10.dart:11:10: Error: Can't use 'Demo' because it is declared more than once.
+                return Demo();
+                       ^
+Program10.dart:17:17: Error: Can't use 'Demo' because it is declared more than once.
+        Demo obj = new Demo();
+
+Explaination :-
+we can not declear two constructors with same name.
+*/
+
+//Program 11
+
+
+class Test{
+
+        Test._private(){
+
+                print("In Demo");
+        }
+
+        factory Test(){
+
+                print("In Demo factory");
+                return Test._private();
+        }
+}
+
+void main(){
+
+        Test obj = new Test();
+}
+
+/*
+Output :-
+In Demo factory
+In Demo
+
+Explaination :-
+creating object of Text class invokes factory constructor and factory constructor returns
+object of named constructor so both lines get printed.
+*/
+

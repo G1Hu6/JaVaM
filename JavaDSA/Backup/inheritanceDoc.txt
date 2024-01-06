@@ -1,0 +1,305 @@
+class Test{
+
+        int x = 10;
+
+        Test(this.x);
+}
+
+class Test2 extends Test{
+
+        Test2(super.x);
+}
+
+void main(){
+
+        Test2 obj = Test2(10);
+        Test obj2 = Test(30);
+        obj.x = 19;
+
+        print(obj.x);
+        print(obj2.x);
+}
+
+/*
+Output :
+19
+30
+
+Explaination :-
+Test2() constructor is called with 10 as argument x is again assigned to 10
+*/
+
+Program2:-
+class Test {
+  int x = 30;
+}
+
+class Test2 extends Test {
+  int x;
+  Test2(this.x);
+  void gun() {
+    this.x = 8;
+  }
+
+  void fun() {
+    print(this.x);
+    print(super.x);
+  }
+}
+
+void main() {
+  Test2 obj = Test2(10);
+  obj.gun();
+  obj.fun();
+}
+
+
+Output:-
+8
+30
+
+Explination:-
+Object is created of Test2 and argument 10 is pass to x
+but after giving call to the gun the value of x changes from 10 to 8 and 8 is printed.
+after giving call to the fun it go to the super where the value of x is 30 so 30 is printed
+
+
+Program3:-
+class Test {
+  int x = 30;
+  int y = 30;
+}
+
+class Test2 extends Test {
+  int x;
+  Test2(this.x);
+
+  void gun() {
+    this.x = 8;
+    this.y = 19;
+  }
+
+  void fun() {
+    print(super.x);
+    print(super.y);
+  }
+}
+
+void main() {
+  Test2 obj = new Test2(10);
+  obj.gun();
+  obj.fun();
+}
+
+Output:-
+30
+19
+
+Explination:-
+Object of Test2 is created there only x is declare so value of x and y comes from parent class to it 
+in gun values of x changes to 8 and y changes to 19
+in fun there is call to super.x and super.y so x is printed as 30 and y is changed to 19
+
+Program4:-
+class Test {
+  int x;
+  int? y;
+  Test({required this.x, this.y});
+}
+
+class Test2 extends Test {
+  Test2(int x, int y) : super(x: 88) {
+    print(x);
+  }
+
+  void fun() {
+    print(this.x);
+    print(super.x);
+  }
+}
+
+void main() {
+  Test2 obj = new Test2(19, 20);
+  obj.fun();
+}
+
+Output:-
+19
+88
+88
+
+Program5:-
+class Test {
+  int x = 20;
+  String str = "Core2web";
+  void parentMethod() {
+    print(x);
+    print(str);
+  }
+}
+
+class Test2 extends Test {
+  int x = 10;
+  String str = "Incubator";
+
+  void childMethod() {
+    print(x);
+    print(str);
+  }
+}
+
+void main() {
+  Test2 obj = new Test2();
+  obj.parentMethod();
+  obj.childMethod();
+}
+
+
+Output:-
+10
+Incubator
+10
+Incubator
+
+Explination:-
+Values of parent class gets changes to 10 and incubator gets printed
+
+Program6:-
+class Test {
+  int? x;
+  Test(this.x) {
+    print("In test");
+  }
+}
+
+class Test2 extends Test {
+  int? y;
+  Test2(this.y, int x) : super(x);
+}
+
+class Test3 extends Test2 {
+  int? z;
+  Test3(this.z, int y, int x) : super(y, x) {
+    print("In Test3");
+  }
+}
+
+void main(){
+  Test3 obj=Test3(10,20,30);
+}
+
+Output:-
+In test
+In Test3
+
+Explination:-
+object is created of test3 so call goes to constructor where z,y and x are given
+where y and x are of parent class 
+
+Program7:-
+class Demo1 {
+  int x;
+  Demo1(this.x);
+}
+
+class Demo2 extends Demo1 {
+  Demo2(super.x);
+
+  void fun() {
+    print(x);
+  }
+}
+
+void main() {
+  Demo1 obj2 = new Demo2(10);
+  obj2.fun();
+}
+
+Output:-
+Error: The method 'fun' isn't defined for the class 'Demo1'.
+ - 'Demo1' is from 'Program7.dart'.
+Try correcting the name to the name of an existing method, or defining a method named 'fun'.
+  obj2.fun();
+       ^^^
+
+Explination:-
+object of Demo2 is created under the reference of Demo1 
+so after call of obj2.fun it search in the Demo1 instead of Demo2
+
+
+Program8:-
+class Parent {
+  Parent() {
+    print("In parent Constructor");
+  }
+}
+
+class Child extends Parent {
+  Child() {
+    super();
+    print("In child Constructor");
+  }
+}
+
+void main() {
+  Child obj = new Child();
+}
+
+
+Output:-
+ Error: Superclass has no method named 'call'.
+    super();
+    ^^^^
+
+Explination:-
+We should declare call method in the parent class
+
+Program9:-
+class Test {
+  int? x;
+  static int y = 20;
+  Test.initX(this.x);
+
+  static void changeY() {
+    y = 30;
+  }
+}
+
+class Test2 extends Test {
+  Test2(int x) : super.initX(x);
+}
+
+void main() {
+  Test2 obj = Test2(40);
+  Test2.changeY();
+}
+
+Output:-
+Error: Member not found: 'Test2.changeY'.
+  Test2.changeY();
+        ^^^^^^^
+
+Explination:-
+Static methods are accessed by the class methods only.
+but Static methods are not inherit to the child class.
+
+Program10:-
+abstract class Demo1 {
+  factory Demo1() {
+    return Demo2();
+  }
+}
+
+class Demo2 implements Demo1 {
+  Demo2() {
+    print("Demo2");
+  }
+}
+
+void main() {
+  Demo1 obj = new Demo1();
+}
+
+Output:-
+Demo2
+
