@@ -1,4 +1,5 @@
 import java.util.Queue;
+import java.util.Scanner;
 import java.util.LinkedList;
 
 class TreeNode{
@@ -16,8 +17,9 @@ class TreeNode{
 
 class BinaryTreeLevelOrder{
 
-	// Basic Approach #1
+    final Scanner sc = new Scanner(System.in);
 	
+    // Basic Approach #1
 	void levelOrder(TreeNode root){
 	
 		Queue<TreeNode> que = new LinkedList<>();
@@ -50,7 +52,6 @@ class BinaryTreeLevelOrder{
 
 
 	// Approach #2
-	
 	void levelOrderWithNull(TreeNode root){
 	
 		Queue<TreeNode> que = new LinkedList<>();
@@ -67,14 +68,51 @@ class BinaryTreeLevelOrder{
 				System.out.println();	// print next line(go to next line)
 				if(que.isEmpty()){
 					
-					break;j
+					break;
 				}
 			}
 		}
 	}
 
+    // Approach #3
+    TreeNode buildTreeByBFS(){
+
+        int data = sc.nextInt(); 
+
+        TreeNode newNode = new TreeNode(data);
+        
+        Queue<TreeNode> que = new LinkedList<>();
+        que.add(newNode);
+
+        TreeNode tree = null;
+        while(!que.isEmpty()){
+
+            TreeNode node = que.remove();
+            int left = sc.nextInt();
+            int right = sc.nextInt();
+
+            if(left != -1){
+
+                node.left = new TreeNode(left);
+                tree.left = node.left;
+                que.add(node.left);
+            }
+
+            if(right != -1){
+
+                node.right = new TreeNode(right);
+                tree.right = node.right;
+                que.add(node.right);
+            }
+        }
+
+        return tree;
+
+    }
+
 	int index = -1;
 	
+    // Built tree from array
 	TreeNode buildTreeFromArray(int nodesArr[]){
 	
 		index++;
@@ -89,6 +127,38 @@ class BinaryTreeLevelOrder{
 
 		return newNode;
 	}
+
+    // 1. Print the nodes that are are present at K_th level
+    void printNodesAtKthLevel(TreeNode root, int k){
+
+        if(root == null){
+
+            return;
+        }
+
+        // If value of k is 0 then we reached to target level
+        if(k == 0){
+
+            System.out.print(root.data + " ");
+            return;
+        }
+
+        // Otherwise do reverse call by decrementing k
+        printNodesAtKthLevel(root.left, k-1);
+        printNodesAtKthLevel(root.right, k-1);
+    }
+
+    // 2. Print all nodes present at each level
+    void printAllNodesAtEachLevel(TreeNode root){
+
+        // These way having time complexity O(N^2) and it always start from root 
+        // so it is not optimized way
+        for(int i = 0; i < heightOfBT(root); i++){ // N
+
+            printNodesAtKthLevel(root, i); // N
+            System.out.println("");
+        }
+    }
 
 	void preOrderBT(TreeNode root){
 	
@@ -125,8 +195,20 @@ class BinaryTreeLevelOrder{
 		postOrderBT(root.right);
 		System.out.print(root.data + " ");
 	}
-	
-	
+
+    // Height of binary tree
+    int heightOfBT(TreeNode root){
+
+        if(root == null){
+
+            return 0;
+        }
+
+        int leftHeight = heightOfBT(root.left);
+        int rightHeight = heightOfBT(root.right);
+
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
 
 	public static void main(String[] args){
 		
@@ -148,5 +230,23 @@ class BinaryTreeLevelOrder{
 		System.out.println();
 
 		bt.levelOrder(root);
+		System.out.println();
+
+        // Print nodes by k_th level
+        bt.printNodesAtKthLevel(root, 0);
+        System.out.println("");
+        bt.printNodesAtKthLevel(root, 1);
+        System.out.println("");
+        bt.printNodesAtKthLevel(root, 2);
+        System.out.println("");
+        bt.printNodesAtKthLevel(root, 3);
+        System.out.println("");
+
+        // Print all nodes level order brute force
+        bt.printAllNodesAtEachLevel(root);
+
+        // Built tree by BFS
+        TreeNode newTree = bt.buildTreeByBFS();
+        bt.printAllNodesAtEachLevel(newTree);
 	}
 }
