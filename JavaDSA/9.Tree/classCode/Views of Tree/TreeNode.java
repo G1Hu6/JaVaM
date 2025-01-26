@@ -9,4 +9,9 @@ public class TreeNode{
         this.data = data;
         left = right = null;
     }
+
+    @Override
+    public String toString(){
+        return "( " + this.left + " ) <-- ( " + this.data + " ) --> ( " + this.right + " )";
+    }
 }
