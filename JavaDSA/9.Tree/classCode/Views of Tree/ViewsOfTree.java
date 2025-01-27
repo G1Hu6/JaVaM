@@ -1,15 +1,16 @@
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Queue;
+import java.util.HashMap;
 
 class Pair{
 
-    int distance;
     TreeNode node;
+    int distance;
 
-    Pair(int distance, TreeNode node){
+    Pair(TreeNode node, int distance){
 
-        this.distance = distence;
+        this.distance = distance;
         this.node = node;
     }
 }
@@ -133,8 +134,35 @@ class ViewsOfTrees{
         rightViewOfTreeRecursive(root.left, level-1);
     }
 
-    // Top View :-
+    // Top View :- Top most node for vertical distance.
+    //             [ HashMap + LevelOrderTraversal ]
+    HashMap<Integer, TreeNode> hashMap = new HashMap<>();
 
+    void topViewOfTree(TreeNode node){
+
+        Queue<Pair> pairsQue = new LinkedList<>();
+        pairsQue.add(new Pair(node, 0));
+
+        while(!pairsQue.isEmpty()){
+
+            Pair newPair = pairsQue.poll();
+            if(!hashMap.containsKey(newPair.distance)){
+
+                hashMap.put(newPair.distance, newPair.node);
+            }
+
+            if(newPair.node.left != null){
+
+                pairsQue.add(new Pair(newPair.node.left, newPair.distance - 1));
+            }
+
+            if(newPair.node.right != null){
+
+                pairsQue.add(new Pair(newPair.node.right, newPair.distance + 1));
+            }
+        }
+    }
+    
     public static void main(String[] args){
 
         ViewsOfTrees view = new ViewsOfTrees();
@@ -144,22 +172,31 @@ class ViewsOfTrees{
         
         System.out.println("-------------------- Tree --------------------");
         BinaryTreeOperationsFromArray.printAllNodesAtEachLevel(root);
+
+
         System.out.println("-------------------- Left View --------------------");
         System.out.println("Iterative Algorithm :-");
         view.leftViewOfTree(root);
-        
         //BinaryTreeOperationsFromArray.printAllNodesAtEachLevel(root);    
-        
         System.out.println("Recursive Algorithm :-");
         view.leftViewOfTreeRecursive(root, 0);
         
+
         System.out.println("-------------------- Right View --------------------");
         System.out.println("Iterative Algorithm :-");
         view.rightViewOfTree(root);
-
         view.maxLevel = -1; // re-assigning maxLevel to initial value -1. 
         System.out.println("Recursive Algorithm :-");
         view.rightViewOfTreeRecursive(root, 0);
+        
+
+        System.out.println("-------------------- Top View --------------------");
+        System.out.println("Iterative Algorithm :-");
+        view.topViewOfTree(root);
+        for(Integer key : view.hashMap.keySet()){
+
+            System.out.println(view.hashMap.get(key).data);
+        }
             
     }
 }
