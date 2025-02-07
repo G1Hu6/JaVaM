@@ -126,6 +126,66 @@ class BinarySearchTreeOperations{
         // root.data >= element
         return searchElementRecursive(root.left, element);
     }
+    
+    // 3. Delete node in BST
+    //    case (I)   :- node has 0 childreen
+    //    case (II)  :- node has 1 child
+    //    case (III) :- node has 2 childreen
+    //                  (1) Replace target deleted node with Max in LST or Min in RST 
+    //                  (2) delete replaced node in RST or LST[ this fit in case (I) or (II) ]
+    
+    TreeNode deleteNodeInBST(TreeNode root, int key){
+
+        if(root == null){
+
+            return null;
+        }
+
+        // key is greater than root
+        if(root.data < key){
+
+            root.right = deleteNodeInBST(root.right, key);
+            return root;
+        }
+        // key is less than root
+        else if(root.data > key){
+
+            root.left = deleteNodeInBST(root.left, key);
+            return root;
+        }else{
+            // key is equal to root (this node should be deleted)
+            // case (I)
+            if(root.left == null && root.right == null){
+            
+                return null;
+            }
+            // case (II)
+            else if(root.left != null && root.right == null){
+
+                return root.left;
+            }
+            else if(root.left == null && root.right != null){
+
+                return root.right;
+            }else{
+    
+                // case (III)  
+                TreeNode temp = root.left;
+                // 1. find max from RST
+                while(temp != null){
+
+                    temp = temp.right;
+                }
+
+                // 2. replace with root node
+                root.data = temp.data;
+                // 3. delete duplicate node
+                root.left = deleteNodeInBST(root.left, temp.data);
+                return root;
+            }
+
+        }
+    }
 
     public static void main(String[] args){
 
@@ -160,5 +220,13 @@ class BinarySearchTreeOperations{
 
             System.out.println("Node ( "+ element + " ) is NotPresent.");
         }
+
+        System.out.println("\n---------------------- Delete Element in  BST -----------------------");
+        System.out.println("Enter element to delete :-");
+        element = sc.nextInt();
+        TreeNode newTree = bst.deleteNodeInBST(root, element);
+        System.out.println("Inorder of BST :-");
+        TreeOperations.inOrderBT(root);
+
     }
 }
